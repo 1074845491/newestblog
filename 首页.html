@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Z丶の博客</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+
+		}
+		body,html{
+			height: 100%;
+		}
+		
+		#bg1{
+ 			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: url(image/q1.png) no-repeat;
+			background-size: 100% 100%;		
+		}
+		#bg2{
+ 			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: url(image/q2.jpg) no-repeat;
+			background-size: 100% 100%;		
+		}
+		#header{
+            position: absolute;
+			display: flex;
+			width: 100%;
+			height: 10%;
+			overflow: hidden;
+			background-color: rgba(0,0,0,0.8);
+			justify-content: flex-end;
+			align-items: center;
+			top: 0;
+
+
+		}
+		#header ul{
+			position: absolute;
+			color: white;
+			list-style: none;
+			left: 10%;
+
+		}
+		#header ul li{
+			transition: all .5s;
+			font-family: cursive;
+			font-size: 22pt;
+			
+        	
+		}
+		#header ul li:hover{
+			cursor: pointer;
+        	color: #2db5a3;
+		}
+		       
+       
+       
+        #left{
+        	display: flex;
+        	width: 250px;
+        	height: 90%;
+        	position: absolute;
+        	bottom: 0;
+        	
+        	justify-content: flex-start;
+        }
+        #info{
+       
+        	display: flex;
+        	width: 210px;
+        	height: 100%;
+        	flex-direction: column;
+        	background-color: rgba(220,220,220,0.3);
+        	justify-content: center;
+        	align-items: center;
+        	
+        }
+        #menu{
+        	
+        	width: auto;
+        	height: 90%;
+        	
+        }
+
+        #info ul{
+        	list-style: none;
+        	
+        	font-size: 15pt;
+        	color: white;
+        }
+        #info ul li{
+        	letter-spacing: 5px;
+        	display: flex;
+        	width: inherit;
+        	height: 30px;
+        	transition: all 1s;
+        	justify-content: center;
+        	align-items: center;
+        	border-radius: 15px;
+        }
+        /*#info ul li:nth-child(1){
+        	background-color: red;
+        }*/
+        #info ul li:hover{
+
+        	cursor: pointer;
+        	background-color: red;
+        	
+        }
+        a{
+        	text-decoration-line: none;
+        	color: white;
+        }
+	</style>
+	
+</head>
+<body>
+	<div id="bg1"></div>
+	<div id="bg2" style="display: none;"></div>
+	<div id="header">
+	 	<ul>
+	 		<li>Z丶の博客</li>
+			
+		</ul>
+		<div>
+			<li><img src="image/1.gif" style="width: 40%;height: 50%;"><li>
+		</div>
+		<div>
+			<li><img src="image/1.gif" style="width: 40%;height: 50%;"><li>
+		</div>
+		<div>
+			<li><img src="image/1.gif" style="width: 40%;height: 50%;"><li>
+		</div>
+		
+	</div>
+	<div id="left">
+		<div id="info">
+			<img src="image/1.jpg" style="width: 70%;height: 18%;border-radius: 50%;position: absolute;top: 3%;">
+			<div style="width: inherit;">
+				<ul>
+					<a href="首页.html"><li><img src="image/home.png" style="width: 25;height: 30px;">&nbsp;&nbsp;主页</li></a>
+					&nbsp;&nbsp;
+					&nbsp;
+					<a href="前端/前端.html"><li><img src="image/release.png" style="width: 25;height: 30px;">&nbsp;&nbsp;前端</li></a>
+					&nbsp;&nbsp;
+					&nbsp;
+					<li><img src="image/works.png" style="width: 25;height: 30px;">&nbsp;&nbsp;关于</li>
+					&nbsp;&nbsp;
+					&nbsp;
+					<li><img src="image/collection.png" style="width: 25;height: 30px;">&nbsp;&nbsp;留言</li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="menu">
+			<button style="width: 40px;height: 30px;background-color: rgb(255,255,255);background: url(image/12.png) no-repeat;background-size: 100% 100%;"></button>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		setTimeout(show1,3000);
+		function show1(){
+			$('#bg1').fadeOut(10000);
+			$('#bg2').fadeIn(13000);
+
+			setTime2();
+		}
+		
+
+		function show2(){
+			$('#bg2').fadeOut(10000);
+			$('#bg1').fadeIn(10000);
+			setTime1();
+		}
+		
+
+		function setTime1(){
+		 	setTimeout(show1,20000);
+		}
+
+		function setTime2(){
+			setTimeout(show2,15000);
+		}
+
+		
+
+		var btn = document.getElementById("menu");
+		var Left = document.getElementById("left");
+		var Info = document.getElementById("info");
+	
+		var timer = null;
+		var steps=0;
+		
+		btn.onclick=function(){
+			if(Left.offsetLeft>=0){
+				show(timer,steps);
+			}
+			else{
+				hide(timer,steps);
+			}
+			
+		};
+
+
+		function show(time,step){
+			clearInterval(time);
+			time = setInterval(function(){
+				if(Left.offsetLeft>-210){
+					Left.style.left = Left.offsetLeft-step+'px';
+					
+					step = step + 2;
+				}
+				else{
+					clearInterval(time);
+				}
+			},20);
+		}
+
+
+		function hide(time,step){
+			clearInterval(time);
+			time = setInterval(function(){
+				if(Left.offsetLeft<0){
+					Left.style.left = Left.offsetLeft+step+'px';
+					btn.style.left = btn.offsetLeft+step+'px';
+					step = step + 2;
+				}
+				else{
+					clearInterval(time);
+				}
+			},20);
+
+		}
+		
+	</script>
+</body>
+</html>

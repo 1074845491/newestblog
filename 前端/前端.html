@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>前端</title>
+	<script type="text/javascript" src="jquery-1.12.4.js"></script>
+	<link rel="stylesheet" href="leaves.css" type="text/css" media="screen" charset="utf-8">
+	<script src="leaves.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			transition: all 1s;
+		}
+		body,html{
+			width: 100%;
+			height: 100%;
+		}
+		body{
+			display: flex;
+			justify-content: center;
+			overflow: auto;
+
+		}
+		#bg{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			background: url(https://cdn.itbyc.com/bgimg_top.jpg) no-repeat;
+			background-size: 100% 100%;
+			overflow: hidden;
+		}
+		#leafContainer 
+		{
+    		position: absolute;
+    		width: 100%;
+    		height: 100%;
+		}
+		#leafContainer > div 
+		{
+    		position: absolute;
+    		width: 100px;
+    		height: 100px;
+    
+    		-webkit-animation-iteration-count: infinite, infinite;
+    		-webkit-animation-direction: normal, normal;
+    		-webkit-animation-timing-function: linear, ease-in;
+		}
+
+
+		#leafContainer > div > img {
+     		position: absolute;
+     		width: 100px;
+     		height: 100px;
+
+  
+     		-webkit-animation-iteration-count: infinite;
+     		-webkit-animation-direction: alternate;
+     		-webkit-animation-timing-function: ease-in-out;
+     		-webkit-transform-origin: 50% -100%;
+		}
+
+
+
+		@-webkit-keyframes fade
+		{
+   
+    		0%   { opacity: 1; }
+    		95%  { opacity: 1; }
+    		100% { opacity: 0; }
+		}
+
+
+
+		@-webkit-keyframes drop
+		{
+    
+    		0%   { -webkit-transform: translate(0px, -50px); }
+   
+    		100% { -webkit-transform: translate(300px, 1000px); }
+		}
+
+
+		@-webkit-keyframes clockwiseSpin
+		{
+    
+    		0%   { -webkit-transform: rotate(-50deg); }
+   
+    		100% { -webkit-transform: rotate(50deg); }
+		}
+
+
+
+		@-webkit-keyframes counterclockwiseSpinAndFlip 
+		{
+    
+   			0%   { -webkit-transform: scale(-1, 1) rotate(50deg); }
+  
+    		100% { -webkit-transform: scale(-1, 1) rotate(-50deg); }
+		}
+
+		#text{
+			position: absolute;
+			width: 50%;
+			height: 100%;
+			z-index: 100px;
+			top: 7%;
+		}
+		.box{
+			display: flex;
+			width: 100%;
+			height: 210px;
+			border: 1px solid gray;
+			overflow: hidden;
+			align-items: center;
+			background-color: rgba(255,255,255,0.7);
+
+		}
+		.img{
+			position: absolute;
+			width: 25%;
+			height: 180px;
+			
+			left: 1.5%;
+			overflow: hidden;
+		}
+		img:hover{
+			transform: scale(1.2);
+			cursor: pointer;
+		}
+		.content{
+			position: absolute;
+			width: 70%;
+			height: 180px;
+			
+			font-weight: 100;
+			right: 2%;
+			overflow: hidden;
+		}
+		.content p{
+			line-height: 24px;
+			text-indent: 2em;
+		}
+		h3{
+			border-top-right-radius: 25px;
+			border-bottom-right-radius: 25px;
+			font-weight: 400;
+			font-size: 14pt;
+			color: rgba(0,0,0,0.7);
+		}
+		h3:hover{
+			cursor: pointer;
+			background-color: rgba(0,220,0,0.5);
+		}
+		.kind1{
+			display: flex;
+			position: absolute;
+			width: 60px;
+			height: 25px;
+			bottom: 0;
+			background-color: rgba(0,220,0,0.5);
+			justify-content: center;
+			align-items: center;
+			color: white;
+		}
+		.kind1:hover{
+			cursor: pointer;
+			background-color: rgba(0,220,0,0.8);
+		}
+		.kind1 label:hover{
+			cursor: pointer;
+		}
+		.kind2{
+			display: flex;
+			position: absolute;
+			width: 80px;
+			height: 25px;
+			bottom: 0;
+			
+			background-color: rgba(0,220,0,0.5);
+			justify-content: center;
+			align-items: center;
+			color: white;
+		}
+		.kind2:hover{
+			cursor: pointer;
+			background-color: rgba(0,220,0,0.8);
+		}
+		.kind2 label:hover{
+			cursor: pointer;
+		}
+		.time{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div id="container">
+      
+    </div> -->
+	<div id="bg">
+		<div id="leafContainer"></div>
+	</div>
+	<div id="text">
+		<div class="box">
+			<div class="img">
+				<img src="1.jpg" style="width: 100%;height: 180px;">
+			</div>
+			<div class="content">
+				<h3 style="width: 35%;">图解CSS：揭开CSS的面纱</h3>
+				&nbsp;
+				<p>如果您对前端方面有所关注，那么对CSS一定不会陌生，你也肯定听说过一些CSS的新特性。在使用CSS新特性之前，你应该对这个新一代样式表语言的来龙去脉有个基本了解。在本章节中，你将知道一个CSS属性的制定将会经历哪些过程，为什么会有浏览器的私有前缀以及如何更好的处理这些私有前缀,在文章最后简单的介绍了开发人员如何对CSS新特性做一些渐...
+				</p>
+				<label class="kind1">
+					<label>CSS3</label>
+				</label>
+				<label class="time">2019-12-26</label>
+			</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="box">
+			<div class="img">
+				<img src="2.jpg" style="width: 100%;height: 180px;">
+			</div>
+			<div class="content">
+				<h3 style="width: 58%;">探究CSS混合模式\滤镜导致CSS 3D失效问题</h3>
+				&nbsp;
+				<p>mix-blend-mode：我们通常称之为混合模式，利用混合模式将多个图层混合可以得到一个新的效果，mix-blend-mode描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。然而，给元素加上了一个混合模式之后，神奇的事情发生了，3D 效果消失了。也就是在每个光点的 CSS元素代码中添加这样一句：
+				mix-blend-mode: lighten;效果从 CSS 3D 变成...
+				</p>
+				<label class="kind1">
+					<label>CSS</label>
+				</label>
+				
+				<label class="time">2019-11-10</label>
+			</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="box">
+			<div class="img">
+				<img src="7.jpg" style="width: 100%;height: 180px;">
+			</div>
+			<div class="content">
+				<h3 style="width: 62%;">2019年值得收藏的15个JavaScript和CSS动画库</h3>
+				&nbsp;
+				<p>当我浏览网页寻找一个整洁的 Javascript 动画库时，我发现很多 “推荐” 的动画库都有一段时间没维护了。经过一些研究，我收集了 15 个最好的 Javascript 动画库，你可以放心在你的应用程序中使用。在文章最后我还添加了一些有用的库，但是有一部分很久没维护了。在深入研究这些库之前，不要忘记使用纯 CSS 。 为什么？ 因为它是标准的，它可以提高性能,提供向...
+				</p>
+				<label class="kind1">
+					<label>CSS</label>
+				</label>
+				<label class="kind2" style="left: 65px;">
+					<label>Javascript</label>
+				</label>
+				<label class="time">2018-01-10</label>
+			</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="box">
+			<div class="img">
+				<img src="3.png" style="width: 100%;height: 180px;">
+			</div>
+			<div class="content">
+				<h3 style="width: 33%;">JavaScript继承和原型链</h3>
+				&nbsp;
+				<p>上一篇我们学习了如何在ES5和ES6中创建Animal类。我们还学习了如何使用 JavaScript的原型在这些类之间共享方法。查看我们在之前文章中看到的代码现在我们想为特定动物建一...
+				</p>
+				<label class="kind2">
+					<label>Javascript</label>
+				</label>
+				<label class="time">2017-08-12</label>
+			</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="box" id="fitst" style="display: none;">
+			<div class="img">
+				<img src="4.jpg" style="width: 100%;height: 180px;">
+			</div>
+			<div class="content">
+				<h3 style="width: 36%;">简单理解Vue中的nextTick</h3>
+				&nbsp;
+				<p>Vue中的nextTick涉及到Vue中DOM的异步更新，感觉很有意思，特意了解了一下。其中关于nextTick的源码涉及到不少知识，很多不太理解，暂且根据自己的一些感悟介绍下nextTic...
+				</p>
+				<label class="kind1">
+					<label>Vuejs</label>
+				</label>
+				<label class="time">2017-05-05</label>
+			</div>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="box" id="last" style="display: none;">
+			<div class="img">
+				<img src="5.jpg" style="width: 100%;height: 180px;">
+			</div>
+			<div class="content">
+				<h3 style="width: 58%;">Webpack揭秘——走向高阶前端的必经之路</h3>
+				&nbsp;
+				<p>
+				随着前端工程化的不断发展，构建工具也在不断完善。作为大前端时代的新宠，webpack渐渐成为新时代前端工程师不可或缺的构建工具，随着webpack4的不断迭代，我们享受着构建效率不断提升带来的快感，配置不断减少的舒适，也一直为重写的构建事件钩子机制煞费苦...
+				</p>
+				<label class="kind1">
+					<label>Nodejs</label>
+				</label>
+				<label class="time">2016-10-22</label>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		window.onscroll= function(){
+			var htmltotalHeight = document.documentElement.scrollHeight;
+			var scrollplace = document.documentElement.scrollTop;
+			var screenAvailHeight = document.documentElement.clientHeight;
+			
+			console.log('滚动条：',scrollplace);
+			console.log('可视高度：',screenAvailHeight);
+			if(htmltotalHeight<=scrollplace+screenAvailHeight){
+				$('#fitst').fadeIn('slow');
+				$('#last').fadeIn(2000);
+			}
+			
+		};
+	</script>
+
+
+</body>
+</html>
